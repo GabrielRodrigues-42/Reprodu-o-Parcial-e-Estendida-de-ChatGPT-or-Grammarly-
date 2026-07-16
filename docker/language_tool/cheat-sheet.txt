@@ -1,0 +1,19 @@
+## LanguageTool — start, stop, test
+
+## Start the LanguageTool server (localhost-only, safe binding)
+docker run -d --name languagetool -p 127.0.0.1:8010:8010 erikvl87/languagetool
+
+## Stop it when not in use
+docker stop languagetool
+
+## Start it again later (reuses the same container)
+docker start languagetool
+
+## Check it's running
+docker ps
+
+## View logs (useful if something seems stuck)
+docker logs languagetool
+
+## Test the API directly
+curl -X POST "http://localhost:8010/v2/check" --data "text=She go to school yesterday.&language=en-US"
