@@ -1,0 +1,6 @@
+hypothesis,description,result,justification
+H1,GECToR and Grammarly have higher F0.5 than ChatGPT on CoNLL-2014,PARTIALLY SUPPORTED,"GECToR F0.5=0.4723, Grammarly F0.5=0.1361, ChatGPT mean F0.5=0.1858. GECToR>ChatGPT: True. Grammarly>ChatGPT: False."
+H2,LLMs show distinct over-correction patterns,PARTIALLY SUPPORTED,"CV per LLM on CoNLL-2014: {'chatgpt': np.float64(0.0233), 'claude': np.float64(0.0064), 'deepseek': np.float64(0.0378)}. Full over-correction analysis requires error-type breakdown beyond F0.5; CV differences suggest distinct variability profiles."
+H3,LLMs show significant stochastic variability in F0.5 across runs,SUPPORTED,"CV (CoNLL-2014): {'chatgpt': np.float64(0.0233), 'claude': np.float64(0.0064), 'deepseek': np.float64(0.0378)}. GECToR and LanguageTool are deterministic (CV=0 by design). LLM CV > 1%: True."
+H4,LLMs show F0.5 degradation on longer sentences vs shorter ones,REQUIRES LENGTH-STRATIFIED SCORING,scores.csv aggregates all length buckets. Run score_all.py with length-bucket filtering to compute per-stratum F0.5 and test H4 directly.
+H5,System ranking is consistent across CoNLL-2014 and BEA-2019,SUPPORTED,"CoNLL-2014 ranking: ['gector', 'claude', 'deepseek', 'chatgpt', 'languagetool']. BEA-2019 ranking: ['gector', 'claude', 'deepseek', 'chatgpt', 'languagetool']. Spearman ρ=1.0, p=0.0."

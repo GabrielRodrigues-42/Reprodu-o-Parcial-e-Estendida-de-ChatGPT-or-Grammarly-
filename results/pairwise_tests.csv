@@ -1,0 +1,36 @@
+dataset,metric,system_A,system_B,mean_A,mean_B,test,statistic,p_value,significant,effect_size,effect_size_type,effect_size_label
+conll14,f05,gector,grammarly,0.4723,0.1361,n/a,,,False,,n/a,
+conll14,f05,gector,languagetool,0.4723,0.059,n/a,,,False,,n/a,
+conll14,f05,gector,chatgpt,0.4723,0.1858,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+conll14,f05,gector,claude,0.4723,0.2099,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+conll14,f05,gector,deepseek,0.4723,0.1899,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+conll14,f05,grammarly,languagetool,0.1361,0.059,n/a,,,False,,n/a,
+conll14,f05,grammarly,chatgpt,0.1361,0.1858,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+conll14,f05,grammarly,claude,0.1361,0.2099,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+conll14,f05,grammarly,deepseek,0.1361,0.1899,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+conll14,f05,languagetool,chatgpt,0.059,0.1858,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+conll14,f05,languagetool,claude,0.059,0.2099,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+conll14,f05,languagetool,deepseek,0.059,0.1899,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+conll14,f05,chatgpt,claude,0.1858,0.2099,t-test (paired),-9.3496,0.0112,True,7.5362,Cohen's d,large
+conll14,f05,chatgpt,deepseek,0.1858,0.1899,t-test (paired),-0.9636,0.4369,False,0.6974,Cohen's d,medium
+conll14,f05,claude,deepseek,0.2099,0.1899,t-test (paired),4.096,0.0548,False,3.8809,Cohen's d,large
+bea19,f05,gector,languagetool,0.6004,0.0589,n/a,,,False,,n/a,
+bea19,f05,gector,chatgpt,0.6004,0.1232,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+bea19,f05,gector,claude,0.6004,0.1555,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+bea19,f05,gector,deepseek,0.6004,0.1423,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+bea19,f05,languagetool,chatgpt,0.0589,0.1232,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+bea19,f05,languagetool,claude,0.0589,0.1555,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+bea19,f05,languagetool,deepseek,0.0589,0.1423,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+bea19,f05,chatgpt,claude,0.1232,0.1555,t-test (paired),-5.1027,0.0363,True,5.1406,Cohen's d,large
+bea19,f05,chatgpt,deepseek,0.1232,0.1423,t-test (paired),-6.9086,0.0203,True,2.8985,Cohen's d,large
+bea19,f05,claude,deepseek,0.1555,0.1423,t-test (paired),3.7022,0.0658,False,4.0363,Cohen's d,large
+jfleg,gleu,gector,languagetool,0.4642,0.4,n/a,,,False,,n/a,
+jfleg,gleu,gector,chatgpt,0.4642,0.4207,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+jfleg,gleu,gector,claude,0.4642,0.4233,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+jfleg,gleu,gector,deepseek,0.4642,0.4207,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+jfleg,gleu,languagetool,chatgpt,0.4,0.4207,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+jfleg,gleu,languagetool,claude,0.4,0.4233,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+jfleg,gleu,languagetool,deepseek,0.4,0.4207,Wilcoxon,0.0,0.25,False,0.9258,r (Wilcoxon),large
+jfleg,gleu,chatgpt,claude,0.4207,0.4233,t-test (paired),-4.45,0.047,True,4.972,Cohen's d,large
+jfleg,gleu,chatgpt,deepseek,0.4207,0.4207,t-test (paired),0.0285,0.9799,False,0.029,Cohen's d,negligible
+jfleg,gleu,claude,deepseek,0.4233,0.4207,t-test (paired),4.9305,0.0388,True,2.6868,Cohen's d,large
