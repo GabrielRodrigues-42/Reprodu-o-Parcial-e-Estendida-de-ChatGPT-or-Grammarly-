@@ -1,0 +1,29 @@
+# requirements-analysis.txt
+
+# --- Dados
+numpy==2.1.2
+pandas==2.2.3
+scipy==1.14.1
+
+# --- Estatística
+statsmodels==0.14.2
+
+# --- APIs de LLM
+openai==2.43.0          # ChatGPT (gpt-4o); DeepSeek via endpoint compatível com a API OpenAI
+anthropic==0.111.0       # Claude (claude-sonnet-4-6)
+
+# --- Scoring de GEC
+errant==3.0.0              # CoNLL-2014, BEA-2019 (F0.5)
+nltk==3.8.1                 # GLEU scorer (JFLEG) -- requer nltk.download('punkt')
+
+# --- Grammarly
+openpyxl==3.1.2
+
+# --- Visualização
+matplotlib==3.9.2
+seaborn==0.13.2
+
+# --- Utilitários
+pyyaml==6.0.3
+tqdm==4.67.1
+python-dotenv==1.0.1      # carrega OPENAI_API_KEY / ANTHROPIC_API_KEY / DEEPSEEK_API_KEY de .env

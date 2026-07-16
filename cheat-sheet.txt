@@ -1,0 +1,17 @@
+## List built images
+docker images
+
+## List running containers
+docker ps
+
+## List all containers (including stopped)
+docker ps -a
+
+## Remove a stopped container by ID or name
+docker rm <container_id_or_name>
+
+## Remove an image
+docker rmi <image_name>
+
+## Free up disk space from unused layers/images (run occasionally)
+docker system prune
