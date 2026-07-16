@@ -12,7 +12,6 @@ Este repositório reproduz e estende o estudo de Wu et al. (2023), comparando se
 ## Sumário
 
 - [Visão geral do experimento](#visão-geral-do-experimento)
-- [Estrutura do repositório](#estrutura-do-repositório)
 - [Ambiente e dependências](#ambiente-e-dependências)
 - [Como reproduzir](#como-reproduzir)
 - [Sobre o Grammarly (consulta manual)](#sobre-o-grammarly-consulta-manual)
@@ -38,40 +37,6 @@ Este repositório reproduz e estende o estudo de Wu et al. (2023), comparando se
 | **Análise estatística** | Shapiro-Wilk (normalidade), teste t pareado / Wilcoxon signed-rank, d de Cohen / r de Wilcoxon, IC 95%, coeficiente de variação |
 
 O desenho experimental completo (variáveis independentes/dependentes/controladas, hipóteses H1–H5, protocolo de coleta) está descrito na Seção 2 do artigo (`docs/artigo.pdf`).
-
----
-
-## Estrutura do Repositório
-
-```
-project/
-├── src/                        # Scripts de consulta aos sistemas de GEC
-│   ├── run_gector.py
-│   ├── run_languagetool.py
-│   └── run_llm_apis.py         # ChatGPT, Claude, DeepSeek via API
-├── data/
-│   ├── raw/
-│   │   ├── sampled_sentences.csv    # 200 sentenças/dataset, estratificadas, com seed
-│   │   └── grammarly_queue.xlsx     # Fila de consulta manual + protocolo (aba "Instructions")
-│   └── README.md               # Proveniência e instruções de download dos datasets originais
-├── scripts/
-│   ├── run_pipeline.sh         # Orquestra a execução ponta a ponta
-│   ├── score_all.py            # Aplica ERRANT/GLEU e gera scores.csv
-│   ├── stats_analysis.py       # Shapiro-Wilk, testes pareados, IC 95%, CV
-│   └── grammarly_protocol.md   # Protocolo de consulta manual (extraído do xlsx)
-├── results/
-│   ├── scores.csv              # Saída bruta por sistema/dataset/execução
-│   ├── stats_summary.csv       # Média, DP, CV, IC 95%, Shapiro-Wilk
-│   ├── pairwise_tests.csv      # Testes pareados entre sistemas
-│   └── hypothesis_results.csv  # Veredito de H1–H5 com justificativa
-├── docs/
-│   └── artigo.pdf              # Artigo científico completo
-├── environment.yml / requirements.txt
-├── Dockerfile
-└── README.md                   # Este arquivo
-```
-
-> **Nota:** os itens em `src/` e `scripts/run_pipeline.sh`, `scripts/score_all.py`, `scripts/stats_analysis.py`, além do `Dockerfile` e `requirements.txt`, ainda precisam ser adicionados a este repositório antes da publicação final — os resultados em `results/` já foram gerados por esse pipeline, mas os scripts em si estão pendentes de organização e upload. Veja [Limitações conhecidas](#limitações-conhecidas).
 
 ---
 
@@ -109,7 +74,7 @@ export DEEPSEEK_API_KEY="..."
 
 ## Como Reproduzir
 
-1. **Configurar o ambiente** (Docker, conforme acima) e exportar as chaves de API.
+1. **Configurar o ambiente** (Docker, conforme acima, lembrando de baixar e adicionar GECToR, não incluído neste repositório) e exportar as chaves de API.
 2. **Baixar os datasets originais** — CoNLL-2014, BEA-2019 e JFLEG não são redistribuídos neste repositório por questões de licenciamento; siga as instruções em `data/README.md` para obtê-los das fontes oficiais.
 3. **Gerar (ou reutilizar) a amostra estratificada**:
    ```bash
@@ -147,8 +112,8 @@ Por depender de fórmulas do Excel, recomenda-se também consultar `results/gram
 
 | Arquivo | Descrição |
 |---|---|
-| `data/raw/sampled_sentences.csv` | 200 sentenças por dataset (600 no total), com `dataset`, `original_id`, `sentence`, `word_count` e `length_bucket` (curta/média/longa) |
-| `data/raw/grammarly_queue.xlsx` | Fila e protocolo de consulta manual ao Grammarly (ver seção acima) |
+| `data/sampled_sentences.csv` | 200 sentenças por dataset (600 no total), com `dataset`, `original_id`, `sentence`, `word_count` e `length_bucket` (curta/média/longa) |
+| `data/grammarly_queue.xlsx` | Fila e protocolo de consulta manual ao Grammarly (ver seção acima) |
 
 Os datasets originais (CoNLL-2014, BEA-2019, JFLEG) devem ser obtidos das fontes oficiais listadas em `data/README.md` — não são redistribuídos aqui.
 
@@ -187,8 +152,6 @@ Ver `results/hypothesis_results.csv` para a justificativa quantitativa de cada v
 - **Grammarly avaliado apenas no CoNLL-2014**, por depender de consulta manual sem API.
 - **Prompt único e fixo** para os três LLMs, o que pode favorecer sistematicamente modelos mais alinhados ao estilo do prompt escolhido (ver Seção 4.2).
 - **Sem taxonomia de tipo de erro**: a análise de *over-correction* (H2) usa um proxy indireto (recall − precisão) em vez de categorização manual por tipo de erro.
-- **Scripts de execução ainda não publicados neste repositório** — apenas os dados de entrada e os resultados consolidados estão disponíveis no momento; a publicação dos scripts de pipeline está em andamento.
-
 Discussão completa em `docs/artigo.pdf`, Seção 4 (Ameaças à Validade).
 
 ---
@@ -209,9 +172,3 @@ Se este trabalho for útil para sua pesquisa, por favor cite:
 Trabalho original reproduzido:
 
 > Wu, H., Wang, W., Wan, Y., Jiao, W., Lyu, M. R. (2023). ChatGPT or Grammarly? Evaluating ChatGPT on Grammatical Error Correction Benchmark. *arXiv preprint arXiv:2303.13648*.
-
----
-
-## Licença
-
-*(A definir — recomenda-se MIT ou Apache 2.0 para o código, e CC-BY 4.0 para dados/artigo, conforme praticado em trabalhos de ciência aberta.)*
